@@ -6,4 +6,4 @@ Your work should be a reflection of the theory and practice of data visualizatio
 such as visual encodings, design principles, and effective communication.
 
 ---
-(Left-handed Advantage in Baseball)[index.html]
+[Left-handed Advantage in Baseball](index.html)
