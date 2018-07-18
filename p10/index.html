@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+<head>
+  <style>
+    body {
+      font:14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+  </style>
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+  <script type="text/javascript">
+    function draw(data) {
+      d3.select("body")
+        .append("h1")
+        .text("Left-Handed Batters are Better");
+
+      d3.select("body")
+        .append("p")
+        .text("So after initial exploratory data analysis, I removed all players"
+             +" whose batting average was 0, reducing the number of players in "
+             +"the dataset from 1157 to 891.")
+        .append("p")
+        .text("It becomes readily apparent that left-handedness and ambidextruity"
+             +" are much more greatly represented among baseball batters"
+             +" than in the general population, though by far the majority of"
+             +" batters remain right-handed.");
+
+      // handedness pie charts
+      var svg1 = d3.select("body")
+        .append("svg")
+          .attr("width", 600)
+          .attr("height", 500)
+        .append('g')
+          .attr('class','chart');
+
+      var myChart1 = new dimple.chart(svg1, data);
+      myChart1.setBounds(45, 45, 500, 420);
+      myChart1.defaultColors = [
+        new dimple.color("#fbb4ae"),
+        new dimple.color("#b3cde3"),
+        new dimple.color("#ccebc5")
+      ];
+
+      myChart1.addMeasureAxis("p", "name");
+      var mySeries1 = myChart1.addSeries("handedness", dimple.plot.pie);
+      mySeries1.aggregate = dimple.aggregateMethod.count;
+
+      myChart1.addLegend(500,25,100,250);
+
+      svg1.append("text")
+        .attr("x", 300)
+        .attr("y", 25)
+        .attr("text-anchor", "middle")
+        .style("font-weight", "bold")
+        .text("Handedness Among Baseball Batters");
+
+      myChart1.draw();
+
+      var general = [
+        {"handedness":"R", "percentage":89.5},
+        {"handedness":"L", "percentage":10},
+        {"handedness":"B", "percentage":0.5}
+      ];
+
+      var svg0 = d3.select("body")
+        .append("svg")
+          .attr("width", 600)
+          .attr("height", 500)
+        .append('g')
+          .attr('class','chart');
+
+      var myChart0 = new dimple.chart(svg0, general);
+      myChart0.setBounds(45,45,500,420);
+      myChart0.defaultColors = [
+        new dimple.color("#fbb4ae"),
+        new dimple.color("#b3cde3"),
+        new dimple.color("#ccebc5")
+      ];
+
+      myChart0.addMeasureAxis("p","percentage");
+      var mySeries0 = myChart0.addSeries("handedness", dimple.plot.pie);
+
+      myChart0.addLegend(500,25,100,250);
+
+      svg0.append("text")
+        .attr("x", 300)
+        .attr("y", 25)
+        .attr("text-anchor", "middle")
+        .style("font-weight", "bold")
+        .text("Handedness in the General Population");
+
+      myChart0.draw();
+
+      // left-handed supremacy
+      d3.select("body")
+        .append("p")
+        .text("Due to a number of advantages conferred to left-handed batters"
+             +" in baseball, they outperform right-handed batters in key stats"
+             +" such as batting average and home runs hit.");
+
+      // handedness vs avg bar graph
+      var svg2 = d3.select("body")
+        .append("svg")
+          .attr("width", 600)
+          .attr("height", 640)
+        .append('g')
+          .attr('class','chart');
+
+      var myChart2 = new dimple.chart(svg2, data);
+      myChart2.setBounds(85,45,480,500);
+      myChart2.defaultColors = [
+        new dimple.color("#fbb4ae"),
+        new dimple.color("#b3cde3"),
+        new dimple.color("#ccebc5")
+      ];
+
+      var x2 = myChart2.addCategoryAxis("x", "handedness");
+      var y2 = myChart2.addMeasureAxis("y", "avg");
+      var mySeries2 = myChart2.addSeries("handedness", dimple.plot.bar);
+      mySeries2.aggregate = dimple.aggregateMethod.avg;
+
+      x2.title = "Player's Handedness";
+      y2.title = "Player's Batting Average";
+      y2.tickFormat = ',.3f';
+
+      svg2.append("text")
+        .attr("x", 300)
+        .attr("y", 25)
+        .attr("text-anchor", "middle")
+        .style("font-weight", "bold")
+        .text("Handedness vs Average Batting Rate");
+
+      myChart2.draw();
+
+      d3.select("body").append("br");
+
+      // handedness vs home runs hit bar graph
+      var svg3 = d3.select("body")
+        .append("svg")
+          .attr("width", 600)
+          .attr("height", 640)
+        .append('g')
+          .attr('class','chart');
+
+      var myChart3 = new dimple.chart(svg3, data);
+      myChart3.setBounds(45,45,520,500);
+      myChart3.defaultColors = [
+        new dimple.color("#fbb4ae"),
+        new dimple.color("#b3cde3"),
+        new dimple.color("#ccebc5")
+      ];
+
+      var x3 = myChart3.addCategoryAxis("x", "handedness");
+      var y3 = myChart3.addMeasureAxis("y", "HR");
+      var mySeries3 = myChart3.addSeries("handedness", dimple.plot.bar);
+      mySeries3.aggregate = dimple.aggregateMethod.avg;
+
+      svg3.append("text")
+        .attr("x", 300)
+        .attr("y", 25)
+        .attr("text-anchor", "middle")
+        .style("font-weight", "bold")
+        .text("Handedness vs Home Runs Completed");
+
+      myChart3.draw();
+    };
+  </script>
+</head>
+<body>
+  <script type="text/javascript">
+    d3.csv("baseball_data.csv", draw);
+  </script>
+</body>
+</html>
