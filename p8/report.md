@@ -1,9 +1,8 @@
 
 # Identify Fraud from Enron Email
 
-Jeremy Tran, June 13, 2018
-
-
+Jeremy Tran  
+June 13, 2018
 
 ### Dataset and Questions
 
