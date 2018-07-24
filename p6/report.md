@@ -1,5 +1,6 @@
 ### Gun Deaths in America 2012-2014  
-by Jeremy Tran, May 28, 2018  
+by Jeremy Tran
+May 28, 2018  
 
 *****
 
@@ -198,12 +199,9 @@ A look at education vs age shows college graduates are older as a group, but the
 
 # Bivariate Analysis
 
-### Talk about some of the relationships you observed in this part of the \
-investigation. How did the feature(s) of interest vary with other features in \
-the dataset?
+### Talk about some of the relationships you observed in this part of the investigation. How did the feature(s) of interest vary with other features in the dataset?
 
-### Did you observe any interesting relationships between the other features \
-(not the main feature(s) of interest)?
+### Did you observe any interesting relationships between the other features (not the main feature(s) of interest)?
 
 I will address both questions at the same time since the main measure of interest in this dataset is counts, which I covered in the univareate section.
 
@@ -240,9 +238,7 @@ The trends for the other groups are similar and nearly overlap.  Noteworthy, how
 
 # Multivariate Analysis
 
-### Talk about some of the relationships you observed in this part of the \
-investigation. Were there features that strengthened each other in terms of \
-looking at your feature(s) of interest?
+### Talk about some of the relationships you observed in this part of the investigation. Were there features that strengthened each other in terms of looking at your feature(s) of interest?
 
 The monthly trend of homicides was reflected in the overall death rate across all the years in the data set.  This co-occurrence held even while other causes of death, which occurred at a higher rate, did not follow closely with overall death rate.
 
@@ -252,8 +248,7 @@ Adjusting for respective group population sizes, whites still suffered dispropor
 
 I was surprised that one year, causes of death outside homicide bucked the trend and actually increased in February relative to the months immediately prior to it and afterward.
 
-### OPTIONAL: Did you create any models with your dataset? Discuss the \
-strengths and limitations of your model.
+### OPTIONAL: Did you create any models with your dataset? Discuss the strengths and limitations of your model.
 
 I don't think it is possible to build a predictive model for this type of data.
 
