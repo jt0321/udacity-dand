@@ -1,7 +1,6 @@
 
 # OpenStreetMap Data Case Study 
-Jeremy Tran
-
+Jeremy Tran  
 January 31, 2018 
 
 ## Map Area
